@@ -4,54 +4,56 @@ package com.clouway.objects.automobiles;
  * Created by clouway on 10.07.17.
  */
 public class Automobiles {
-    static int maxspeed;
-    static String colour;
-    static String dateOfManufacture;
-    static int weight;
-    static int numberOfPassangers;
-    void setMaxspeed (int newValue){
-        maxspeed = newValue;
+
+    private static int maxspeed;
+    private static String colour;
+    private static String dateOfManufacture;
+    public Automobiles(int Setmaxspeed, String Setcolour, String SetDateOfManufacture){
+        maxspeed = Setmaxspeed;
+        colour=Setcolour;
+        dateOfManufacture = SetDateOfManufacture;
     }
-    void setColour (String newColour){
-        colour = newColour;
+
+    public void printStates(){
+                System.out.println("Max Speed : " + maxspeed  );
+                System.out.println("Colour : " + colour);
+                System.out.println("Date of Manufacture : " + dateOfManufacture);
+                System.out.println();
+            }
+
+
+    public static class Opel extends Automobiles{
+
+        public int weight;
+        public int numberOfPassengers;
+        public Opel(int Setmaxspeed, String Setcolour, String SetDateOfManufacture, int Setweight, int SetnumberOfPassengers){
+            super(Setmaxspeed, Setcolour, SetDateOfManufacture);
+                weight=Setweight;
+                numberOfPassengers=SetnumberOfPassengers;
+        }
+
+        @Override
+        public void printStates() {
+            System.out.println("Max Speed : " + maxspeed  );
+            System.out.println("Colour : " + colour);
+            System.out.println("Date of Manufacture : " + dateOfManufacture);
+            System.out.println("Number of Passengers : " + numberOfPassengers);
+            System.out.println("Weight : " + weight);
+            System.out.println();
+        }
     }
-    void setDateOfManufacture (String DOM){
-        dateOfManufacture = DOM;
-    }
-    void setNumberOfPassangers(int newValue){
-        numberOfPassangers = newValue;
-    }
-    void setWeight(int newValue){
-        weight=newValue;
-    }
-    void PrintStates(){
-        System.out.println("Max Speed : " + maxspeed  );
-        System.out.println("Colour : " + colour);
-        System.out.println("Date of Manufacture : " + dateOfManufacture);
-        System.out.println("Number of Passengers : " + numberOfPassangers);
-        System.out.println("Weight : " + weight);
-        System.out.println();
-    }
+
     public static void main(String[] args) {
-        Automobiles VW = new Automobiles();
-        Automobiles Mercedes = new Automobiles();
-        Automobiles Opel = new Automobiles();
-        VW.setMaxspeed(200);
-        VW.setColour("Red");
-        VW.setDateOfManufacture("14.03.2006");
-        System.out.println("Car : Volkswagen " );
-        VW.PrintStates();
-        Mercedes.setMaxspeed(260);
-        Mercedes.setColour("Green");
-        Mercedes.setDateOfManufacture("27.07.2012");
-        System.out.println("Car : Mercedes " );
-        Mercedes.PrintStates();
-        Opel.setMaxspeed(230);
-        Opel.setColour("Dark Mat");
-        Opel.setDateOfManufacture("03.09.2009");
-        Opel.setNumberOfPassangers(4);
-        Opel.setWeight(1350);
-        System.out.println("Car : Opel " );
-        Opel.PrintStates();
+        Automobiles volkswagen = new Automobiles(200,"Red", "27.03.2006");
+        System.out.println("Car : volkswagen");
+        volkswagen.printStates();
+        Automobiles mercedes = new Automobiles(260,"Green", "13.11.2012");
+        System.out.println("Car : Mercedes");
+        mercedes.printStates();
+        Automobiles opel = new Opel(230, "Yellow", "04.09.2009", 1450, 4);
+        System.out.println("Car : Opel");
+        opel.printStates();
+            }
+
+
     }
-}
